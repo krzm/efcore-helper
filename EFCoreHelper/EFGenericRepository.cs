@@ -47,7 +47,9 @@ public class EFGenericRepository<TEntity, TContext>
 
 	public virtual TEntity GetByID(object id)
 	{
-		return dbSet.Find(id);
+		TEntity? entity = dbSet.Find(id);
+		ArgumentNullException.ThrowIfNull(entity);
+		return entity;
 	}
 
 	public virtual void Insert(TEntity entity)
@@ -63,7 +65,8 @@ public class EFGenericRepository<TEntity, TContext>
 
 	public virtual void Delete(object id)
 	{
-		TEntity entityToDelete = dbSet.Find(id);
+		TEntity? entityToDelete = dbSet.Find(id);
+		ArgumentNullException.ThrowIfNull(entityToDelete);
 		Delete(entityToDelete);
 	}
 
