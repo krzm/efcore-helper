@@ -1,17 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace EFCoreHelper;
+namespace EFCore.Helper;
 
-public class EFGenericRepository<TEntity, TContext>
-	: IGenericRepository<TEntity>
+public class EFRepository<TEntity, TContext>
+	: IRepository<TEntity>
 		where TEntity : class
 		where TContext : DbContext
 {
 	private readonly TContext context;
 	private readonly DbSet<TEntity> dbSet;
 
-	public EFGenericRepository(TContext context)
+	public EFRepository(TContext context)
 	{
 		this.context = context;
 		dbSet = context.Set<TEntity>();

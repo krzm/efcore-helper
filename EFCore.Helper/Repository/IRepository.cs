@@ -1,8 +1,8 @@
 ﻿using System.Linq.Expressions;
 
-namespace EFCoreHelper;
+namespace EFCore.Helper;
 
-public interface IGenericRepository<TEntity> 
+public interface IRepository<TEntity> 
     where TEntity : class
 {
     IEnumerable<TEntity> Get(
